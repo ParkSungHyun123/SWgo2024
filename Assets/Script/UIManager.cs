@@ -27,6 +27,11 @@ public class UIManager : MonoBehaviour
         else if (Alarm)
         {
             AlarmText.SetActive(true);
+
+            if (EnemyMove.isStopped == true)
+            {
+                AlarmText.SetActive(false);
+            }
         }
     }
     private void OnTriggerStay(Collider other)

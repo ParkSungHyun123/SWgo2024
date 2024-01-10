@@ -91,7 +91,6 @@ public class PlMove : MonoBehaviour
                         {
                             Enemyanimator.SetBool("Hwchu", true);
                             PlayerAnimator.SetBool("Use", true);
-                            EnemyMove.speed = 0;
                             Cool = 0f;
                             StartCoroutine(HwchuCool());
                             Debug.Log(currentSceneIndex);
@@ -100,7 +99,6 @@ public class PlMove : MonoBehaviour
                         {
                             Enemyanimator.SetBool("OOF", true);
                             PlayerAnimator.SetBool("Using", true);
-                            EnemyMove.speed = 0;
                             Cool = 0f;
                             StartCoroutine(OOFCool());
                             Debug.Log(currentSceneIndex);
@@ -112,10 +110,9 @@ public class PlMove : MonoBehaviour
             {
                 if (currentSceneIndex == 3)
                 {
-                    EnemyMove.speed = 0;
-                    Instantiate(Police, Spawner.position, Quaternion.identity);
-                    Debug.Log(currentSceneIndex);
                     Alarm.Play();
+                    StartCoroutine(UAK());
+                    Debug.Log(currentSceneIndex);
 
                     alarm = false;
                 }
@@ -125,6 +122,7 @@ public class PlMove : MonoBehaviour
     
     private IEnumerator HwchuCool()
     {
+        EnemyMove.speed = 0;
         yield return new WaitForSeconds(2f);
         Enemyanimator.SetBool("Hwchu", false);
         PlayerAnimator.SetBool("Use", false);
@@ -132,10 +130,23 @@ public class PlMove : MonoBehaviour
     }
     private IEnumerator OOFCool()
     {
+        EnemyMove.speed = 0;
         yield return new WaitForSeconds(2f);
         Enemyanimator.SetBool("OOF", false);
         PlayerAnimator.SetBool("Using", false);
         EnemyMove.speed = 3f;
+    }
+
+    private IEnumerator UAK()
+    {
+        EnemyMove.speed = 0;
+        PlayerAnimator.SetBool("Gyungbo", true);
+        Enemyanimator.SetBool("EAR", true);
+        yield return new WaitForSeconds(2f);
+        PlayerAnimator.SetBool("Gyungbo", false);
+        Enemyanimator.SetBool("EAR", false);
+        Instantiate(Police, Spawner.position, Quaternion.identity);
+        EnemyMove.speed = 3;
     }
 
     public void OnCollisionEnter(Collision coll)
