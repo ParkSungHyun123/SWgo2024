@@ -124,4 +124,9 @@ public class PlMove : MonoBehaviour
         Enemyanimator.SetBool("OOF", false);
         EnemyMove.speed = 3f;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy") SceneManager.LoadScene("GameOver");
+    }
 }

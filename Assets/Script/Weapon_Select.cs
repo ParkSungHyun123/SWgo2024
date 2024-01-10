@@ -37,11 +37,6 @@ public class Weapon_Select : MonoBehaviour
         SceneManager.LoadScene("Spray");
     }
 
-    public void ClickWeapon_4()
-    {
-        
-    }
-
     public void ClickExit()
     {
         SceneManager.LoadScene("StartScene");
