@@ -11,11 +11,11 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;
     }
 
     void Update()
     {
+        agent.speed = speed;
         agent.SetDestination(player.position);
     }
 }
