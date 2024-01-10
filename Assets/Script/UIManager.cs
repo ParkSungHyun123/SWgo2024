@@ -46,4 +46,12 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            FText.SetActive(false);
+        }
+    }
 }
