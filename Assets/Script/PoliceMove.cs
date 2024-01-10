@@ -1,26 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PoliceMove : MonoBehaviour
 {
-    private Transform target;
-    public static float speed = 3f;
+    private Transform Enemy; 
+    private NavMeshAgent agent;
 
-    public void Awake()
-    {
-        target = GameObject.FindGameObjectWithTag("Enemy").transform;
-    }
+    public static float speed = 4.0f;
 
-    public void Update()
+    void Start()
     {
-        Follow();
+        Enemy = FindObjectOfType<EnemyMove>().transform;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = speed;
     }
-    private void Follow()
+    void Update()
     {
-        transform.LookAt(target);
-        transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
+        agent.SetDestination(Enemy.position);
     }
 }

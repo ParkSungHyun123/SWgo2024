@@ -1,26 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
-    private Transform target;
-    public static float speed = 3f;
+    public Transform player;
+    private NavMeshAgent agent;
 
-    public void Awake()
+    public static float speed = 3.0f;
+
+    void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = speed;
     }
 
-    public void Update()
+    void Update()
     {
-        Follow();
-    }
-    private void Follow()
-    {
-        transform.LookAt(target);
-        transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
+        agent.SetDestination(player.position);
     }
 }
