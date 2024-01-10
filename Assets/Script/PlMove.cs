@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlMove : MonoBehaviour
 {
@@ -16,11 +17,8 @@ public class PlMove : MonoBehaviour
     public Animator Enemyanimator;
 
 
-
-
     void Start()
     {
-
     }
 
     void Update()
@@ -69,27 +67,48 @@ public class PlMove : MonoBehaviour
 
     void Hwchu()
     {
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        int currentSceneIndex = currentScene.buildIndex;
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 3))
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    Enemyanimator.SetBool("Hwchu", true);
-                    EnemyMove.speed = 0;
-                    StartCoroutine(ResetSpeedAfterDuration());
+                    if(currentSceneIndex == 1)
+                    {
+                        Enemyanimator.SetBool("Hwchu", true);
+                        EnemyMove.speed = 0;
+                        StartCoroutine(HwchuCool());
+                        Debug.Log(currentSceneIndex);
+                    }
+                    if(currentSceneIndex == 2)
+                    {
+                        Enemyanimator.SetBool("OOF", true);
+                        EnemyMove.speed = 0;
+                        StartCoroutine(OOFCool());
+                        Debug.Log(currentSceneIndex);
+                    }
                 }
             }
         }
     }
 
-    private IEnumerator ResetSpeedAfterDuration()
+    private IEnumerator HwchuCool()
     {
         yield return new WaitForSeconds(3);
         Enemyanimator.SetBool("Hwchu", false);
+        EnemyMove.speed = 3f;
+    }
+    private IEnumerator OOFCool()
+    {
+        yield return new WaitForSeconds(1.2f);
+        Enemyanimator.SetBool("OOF", false);
         EnemyMove.speed = 3f;
     }
 }

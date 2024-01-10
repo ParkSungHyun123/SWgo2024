@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class MouseMove : MonoBehaviour
 {
-    public float sesitivity = 500f;
+    public float sensitivity = 250f;
     public float rotationX;
     public float rotationY;
-    void Start()
-    {
-
-    }
 
     void Update()
     {
         float mouseMoveX = Input.GetAxis("Mouse X");
-
         float mouseMoveY = Input.GetAxis("Mouse Y");
 
-        rotationY += mouseMoveX * sesitivity * Time.deltaTime;
-
-        rotationX += mouseMoveY * sesitivity * Time.deltaTime;
-
+        rotationY += mouseMoveX * sensitivity * Time.deltaTime;
+        rotationX += mouseMoveY * sensitivity * Time.deltaTime;
 
         if (rotationX > 60f)
         {
