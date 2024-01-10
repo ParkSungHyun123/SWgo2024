@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Weapon_Select : MonoBehaviour
 {
     public GameObject StartUI;
     public GameObject secret_Weapon;
