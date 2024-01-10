@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WeaponSelect.unity
     guid: 935c1c63a13806841828b4d2034a88a1
+  - enabled: 1
+    path: Assets/Scenes/Clear.unity
+    guid: fe76a8b15c2c7384f9bc1aacb3859134
   m_configObjects: {}
