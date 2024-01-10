@@ -111,9 +111,7 @@ public class PlMove : MonoBehaviour
             {
                 if (currentSceneIndex == 3)
                 {
-                    Enemyanimator.SetBool("OOF", true);
                     EnemyMove.speed = 0;
-                    StartCoroutine(OOFCool());
                     Instantiate(Police, Spawner.position, Quaternion.identity);
                     Debug.Log(currentSceneIndex);
                     Alarm.Play();
