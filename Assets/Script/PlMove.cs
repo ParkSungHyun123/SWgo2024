@@ -144,6 +144,6 @@ public class PlMove : MonoBehaviour
 
     private void GameOver()
     {
-        SceneManager.LoadScene("4");
+        SceneManager.LoadScene("GameOver");
     }
 }
