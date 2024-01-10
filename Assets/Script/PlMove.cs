@@ -13,12 +13,23 @@ public class PlMove : MonoBehaviour
     public float gravity = -20f;
     public float yVelocity = 0;
 
+    public Animator Enemyanimator;
+
+
+
     void Start()
     {
 
     }
 
     void Update()
+    {
+        Move();
+        Hwchu();
+
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    void Move()
     {
         float h = Input.GetAxis("Horizontal");
 
@@ -53,8 +64,24 @@ public class PlMove : MonoBehaviour
         moveDirection.y = yVelocity;
 
         characterController.Move(moveDirection * Time.deltaTime);
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
+    void Hwchu()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    Debug.Log("Enemy에 닿았습니다!");
+
+                    Enemyanimator.SetBool("Hwchu", true);
+                }
+            }
+        }
+    }
 }
