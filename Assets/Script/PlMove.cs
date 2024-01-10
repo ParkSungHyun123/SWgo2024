@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Claims;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,7 @@ public class PlMove : MonoBehaviour
     public float yVelocity = 0;
 
     public Animator Enemyanimator;
+    public Animator PlayerAnimator;
 
     public GameObject Police;
     public Transform Spawner;
@@ -23,6 +25,8 @@ public class PlMove : MonoBehaviour
     public AudioSource Alarm;
 
     public bool alarm = true;
+
+    public float Cool;
 
 
     void Start()
@@ -35,6 +39,8 @@ public class PlMove : MonoBehaviour
         Use();
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        Cool += Time.deltaTime;
     }
     void Move()
     {
@@ -79,19 +85,25 @@ public class PlMove : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    if(currentSceneIndex == 1)
+                    if(Cool >= 2f)
                     {
-                        Enemyanimator.SetBool("Hwchu", true);
-                        EnemyMove.speed = 0;
-                        StartCoroutine(HwchuCool());
-                        Debug.Log(currentSceneIndex);
-                    }
-                    if(currentSceneIndex == 2)
-                    {
-                        Enemyanimator.SetBool("OOF", true);
-                        EnemyMove.speed = 0;
-                        StartCoroutine(OOFCool());
-                        Debug.Log(currentSceneIndex);
+                        if (currentSceneIndex == 1)
+                        {
+                            Enemyanimator.SetBool("Hwchu", true);
+                            PlayerAnimator.SetBool("Use", true);
+                            EnemyMove.speed = 0;
+                            Cool = 0f;
+                            StartCoroutine(HwchuCool());
+                            Debug.Log(currentSceneIndex);
+                        }
+                        if (currentSceneIndex == 2)
+                        {
+                            Enemyanimator.SetBool("OOF", true);
+                            EnemyMove.speed = 0;
+                            Cool = 0f;
+                            StartCoroutine(OOFCool());
+                            Debug.Log(currentSceneIndex);
+                        }
                     }
                 }
             }
@@ -99,9 +111,7 @@ public class PlMove : MonoBehaviour
             {
                 if (currentSceneIndex == 3)
                 {
-                    Enemyanimator.SetBool("OOF", true);
                     EnemyMove.speed = 0;
-                    StartCoroutine(OOFCool());
                     Instantiate(Police, Spawner.position, Quaternion.identity);
                     Debug.Log(currentSceneIndex);
                     Alarm.Play();
@@ -111,11 +121,12 @@ public class PlMove : MonoBehaviour
             }
         }
     }
-
+    
     private IEnumerator HwchuCool()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(2f);
         Enemyanimator.SetBool("Hwchu", false);
+        PlayerAnimator.SetBool("Use", false);
         EnemyMove.speed = 3f;
     }
     private IEnumerator OOFCool()
@@ -125,8 +136,14 @@ public class PlMove : MonoBehaviour
         EnemyMove.speed = 3f;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision coll)
     {
-        if (collision.gameObject.tag == "Enemy") SceneManager.LoadScene("GameOver");
+        if(coll.gameObject.CompareTag("Enemy"))
+        GameOver();
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene("4");
     }
 }
