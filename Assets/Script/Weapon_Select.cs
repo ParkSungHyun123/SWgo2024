@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Weapon_Select : MonoBehaviour
 {
-    public GameObject StartUI;
     public GameObject secret_Weapon;
 
     public int clear;
@@ -45,6 +44,6 @@ public class Weapon_Select : MonoBehaviour
 
     public void ClickExit()
     {
-        StartUI.SetActive(true);
+        SceneManager.LoadScene("StartScene");
     }
 }

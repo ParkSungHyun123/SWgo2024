@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/alarm.unity
     guid: 5ac610b95d8615b4abde717eae63ab18
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 78d4bf46d4f38494ca809a2169750b78
+  - enabled: 1
+    path: Assets/Scenes/WeaponSelect.unity
+    guid: 935c1c63a13806841828b4d2034a88a1
   m_configObjects: {}
