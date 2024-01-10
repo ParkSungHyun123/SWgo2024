@@ -19,7 +19,7 @@ public class StartUI : MonoBehaviour
 
     public void ClickStartButten()
     {
-        SceneManager.LoadScene("SampleScene");
+        gameObject.SetActive(false);
     }
 
     public void ClickQuitButten()
