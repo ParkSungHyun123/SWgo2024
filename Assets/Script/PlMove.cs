@@ -16,6 +16,11 @@ public class PlMove : MonoBehaviour
 
     public Animator Enemyanimator;
 
+    public GameObject Police;
+    public Transform Spawner;
+
+    public bool alarm = true;
+
 
     void Start()
     {
@@ -24,7 +29,7 @@ public class PlMove : MonoBehaviour
     void Update()
     {
         Move();
-        Hwchu();
+        Use();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -56,7 +61,7 @@ public class PlMove : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
-    void Hwchu()
+    void Use()
     {
 
         Scene currentScene = SceneManager.GetActiveScene();
@@ -85,6 +90,19 @@ public class PlMove : MonoBehaviour
                         StartCoroutine(OOFCool());
                         Debug.Log(currentSceneIndex);
                     }
+                }
+            }
+            if (alarm == true)
+            {
+                if (currentSceneIndex == 3)
+                {
+                    Enemyanimator.SetBool("OOF", true);
+                    EnemyMove.speed = 0;
+                    StartCoroutine(OOFCool());
+                    Instantiate(Police, Spawner.position, Quaternion.identity);
+                    Debug.Log(currentSceneIndex);
+
+                    alarm = false;
                 }
             }
         }
