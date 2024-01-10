@@ -10,7 +10,7 @@ public class PoliceMove : MonoBehaviour
     public Animator animator;
     private Rigidbody rb;
 
-    public static float speed = 5.0f;
+    public static float speed = 6.0f;
     private bool isStopped = false;
 
     void Start()
