@@ -22,22 +22,22 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void ClickWeapon_1()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("baton");
     }
     
     public void ClickWeapon_2()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Spray");
     }
 
     public void ClickWeapon_3()
     {
-        SceneManager.LoadScene("SampleScene");
+        
     }
 
     public void ClickWeapon_4()
     {
-        SceneManager.LoadScene("SampleScene");
+        
     }
 
     public void ClickExit()
