@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.VFX;
 
 public class NewBehaviourScript : MonoBehaviour
 {
     public GameObject StartUI;
+    public GameObject secret_Weapon;
+
+    public int clear;
 
     // Start is called before the first frame update
     void Start()
@@ -17,22 +19,23 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (clear == 3) secret_Weapon.SetActive(true);
+        else secret_Weapon.SetActive(false);
     }
 
     public void ClickWeapon_1()
     {
-        SceneManager.LoadScene("baton");
+        SceneManager.LoadScene("alarm");
     }
     
     public void ClickWeapon_2()
     {
-        SceneManager.LoadScene("Spray");
+        SceneManager.LoadScene("baton");
     }
 
     public void ClickWeapon_3()
     {
-        
+        SceneManager.LoadScene("Spray");
     }
 
     public void ClickWeapon_4()

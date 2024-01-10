@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/baton.unity
     guid: 0b054b54978024242ac24b86047bc8d9
+  - enabled: 1
+    path: Assets/Scenes/alarm.unity
+    guid: 5ac610b95d8615b4abde717eae63ab18
   m_configObjects: {}
