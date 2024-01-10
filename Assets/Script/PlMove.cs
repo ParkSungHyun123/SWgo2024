@@ -81,7 +81,7 @@ public class PlMove : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 3))
+            if (Physics.Raycast(ray, out hit, 6))
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
@@ -99,6 +99,7 @@ public class PlMove : MonoBehaviour
                         if (currentSceneIndex == 2)
                         {
                             Enemyanimator.SetBool("OOF", true);
+                            PlayerAnimator.SetBool("Using", true);
                             EnemyMove.speed = 0;
                             Cool = 0f;
                             StartCoroutine(OOFCool());
@@ -131,8 +132,9 @@ public class PlMove : MonoBehaviour
     }
     private IEnumerator OOFCool()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(2f);
         Enemyanimator.SetBool("OOF", false);
+        PlayerAnimator.SetBool("Using", false);
         EnemyMove.speed = 3f;
     }
 
@@ -144,6 +146,7 @@ public class PlMove : MonoBehaviour
 
     private void GameOver()
     {
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("GameOver");
     }
 }
