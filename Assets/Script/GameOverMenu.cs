@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartUI : MonoBehaviour
+public class GameOverMenu : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,14 +17,13 @@ public class StartUI : MonoBehaviour
         
     }
 
-    public void ClickStartButten()
+    public void ClickWeaponSelect()
     {
         SceneManager.LoadScene("WeaponSelect");
     }
 
-    public void ClickQuitButten()
+    public void ClickExitMenu()
     {
-        Application.Quit();
-        Debug.Log("Quit");
+        SceneManager.LoadScene("StartScene");
     }
 }
