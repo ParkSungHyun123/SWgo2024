@@ -49,15 +49,6 @@ public class PlMove : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            moveSpeed = 13;
-        }
-        else
-        {
-            moveSpeed = 7;
-        }
-
         yVelocity += (gravity * Time.deltaTime);
 
         moveDirection.y = yVelocity;
@@ -101,7 +92,7 @@ public class PlMove : MonoBehaviour
 
     private IEnumerator HwchuCool()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.8f);
         Enemyanimator.SetBool("Hwchu", false);
         EnemyMove.speed = 3f;
     }

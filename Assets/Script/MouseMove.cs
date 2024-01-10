@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class MouseMove : MonoBehaviour
 {
-    public float sensitivity = 250f;
-    public float rotationX;
-    public float rotationY;
+    [SerializeField] private float mouseSpeed = 8f;
+    private float mouseX = 0f;
+    private float mouseY = 0f; 
 
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
     void Update()
     {
-        float mouseMoveX = Input.GetAxis("Mouse X");
-        float mouseMoveY = Input.GetAxis("Mouse Y");
+        mouseX += Input.GetAxis("Mouse X") * mouseSpeed;
+        mouseY += Input.GetAxis("Mouse Y") * mouseSpeed;
 
-        rotationY += mouseMoveX * sensitivity * Time.deltaTime;
-        rotationX += mouseMoveY * sensitivity * Time.deltaTime;
+        mouseY = Mathf.Clamp(mouseY, -50f, 50f);
 
-        if (rotationX > 60f)
-        {
-            rotationX = 60f;
-        }
-
-        if (rotationX < -60f)
-        {
-            rotationX = -60f;
-        }
-
-        transform.eulerAngles = new Vector3(-rotationX, rotationY, 0);
+        this.transform.localEulerAngles = new Vector3(-mouseY, mouseX, 0);
     }
 }
