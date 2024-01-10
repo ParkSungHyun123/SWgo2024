@@ -17,6 +17,7 @@ public class PlMove : MonoBehaviour
     public float yVelocity = 0;
 
     public Animator Enemyanimator;
+    public Animator PlayerAnimator;
 
     public GameObject Police;
     public Transform Spawner;
@@ -89,6 +90,7 @@ public class PlMove : MonoBehaviour
                         if (currentSceneIndex == 1)
                         {
                             Enemyanimator.SetBool("Hwchu", true);
+                            PlayerAnimator.SetBool("Use", true);
                             EnemyMove.speed = 0;
                             Cool = 0f;
                             StartCoroutine(HwchuCool());
@@ -126,6 +128,7 @@ public class PlMove : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         Enemyanimator.SetBool("Hwchu", false);
+        PlayerAnimator.SetBool("Use", false);
         EnemyMove.speed = 3f;
     }
     private IEnumerator OOFCool()
