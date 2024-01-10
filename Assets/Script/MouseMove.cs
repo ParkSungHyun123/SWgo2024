@@ -23,14 +23,14 @@ public class MouseMove : MonoBehaviour
         rotationX += mouseMoveY * sesitivity * Time.deltaTime;
 
 
-        if (rotationX > 35f)
+        if (rotationX > 60f)
         {
-            rotationX = 35f;
+            rotationX = 60f;
         }
 
-        if (rotationX < -30f)
+        if (rotationX < -60f)
         {
-            rotationX = -30f;
+            rotationX = -60f;
         }
 
         transform.eulerAngles = new Vector3(-rotationX, rotationY, 0);
