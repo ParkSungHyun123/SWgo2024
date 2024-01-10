@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour
 {
     private Transform target;
-    public float speed = 1f;
+    public static float speed = 3f;
 
     public void Awake()
     {

@@ -17,6 +17,7 @@ public class PlMove : MonoBehaviour
 
 
 
+
     void Start()
     {
 
@@ -77,11 +78,18 @@ public class PlMove : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    Debug.Log("Enemy에 닿았습니다!");
-
                     Enemyanimator.SetBool("Hwchu", true);
+                    EnemyMove.speed = 0;
+                    StartCoroutine(ResetSpeedAfterDuration());
                 }
             }
         }
+    }
+
+    private IEnumerator ResetSpeedAfterDuration()
+    {
+        yield return new WaitForSeconds(3);
+        Enemyanimator.SetBool("Hwchu", false);
+        EnemyMove.speed = 3f;
     }
 }
