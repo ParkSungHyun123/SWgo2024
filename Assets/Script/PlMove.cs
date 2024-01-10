@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,8 @@ public class PlMove : MonoBehaviour
 
     public GameObject Police;
     public Transform Spawner;
+
+    public AudioSource Alarm;
 
     public bool alarm = true;
 
@@ -101,6 +104,7 @@ public class PlMove : MonoBehaviour
                     StartCoroutine(OOFCool());
                     Instantiate(Police, Spawner.position, Quaternion.identity);
                     Debug.Log(currentSceneIndex);
+                    Alarm.Play();
 
                     alarm = false;
                 }
