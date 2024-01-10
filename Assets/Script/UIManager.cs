@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public class UIManager : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             FText.SetActive(true);
+
+            if(Input.GetKeyDown(KeyCode.F)) 
+            {
+                SceneManager.LoadScene("Clear");
+            }
         }
     }
 }
