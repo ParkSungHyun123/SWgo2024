@@ -8,7 +8,7 @@ public class EnemyMove : MonoBehaviour
     public Animator Enemyanimator;
     private Rigidbody rb;
 
-    public static float speed = 3.0f;
+    public static float speed = 2.0f;
     private bool isStopped = false;
 
     void Start()
