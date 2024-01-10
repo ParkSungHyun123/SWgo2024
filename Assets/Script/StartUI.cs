@@ -16,7 +16,10 @@ public class StartUI : MonoBehaviour
     {
         
     }
-
+    public void OnLevelWasLoaded()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void ClickStartButten()
     {
         SceneManager.LoadScene("WeaponSelect");

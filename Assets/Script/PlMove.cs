@@ -157,7 +157,6 @@ public class PlMove : MonoBehaviour
 
     private void GameOver()
     {
-        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("GameOver");
     }
 }

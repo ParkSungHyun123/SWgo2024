@@ -16,7 +16,10 @@ public class ClearUI : MonoBehaviour
     {
         
     }
-
+    public void OnLevelWasLoaded()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void ClickGotoMenu()
     {
         SceneManager.LoadScene("StartScene");

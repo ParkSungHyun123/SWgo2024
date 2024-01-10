@@ -21,6 +21,10 @@ public class GameOverMenu : MonoBehaviour
     {
         SceneManager.LoadScene("WeaponSelect");
     }
+    public void OnLevelWasLoaded()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     public void ClickExitMenu()
     {

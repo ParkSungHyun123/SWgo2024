@@ -14,7 +14,10 @@ public class Weapon_Select : MonoBehaviour
     {
         
     }
-
+    public void OnLevelWasLoaded()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
     // Update is called once per frame
     void Update()
     {
